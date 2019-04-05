@@ -1,0 +1,6 @@
+{
+  "template": "gatsby",
+  "container": {
+    "port": 8000
+  }
+}

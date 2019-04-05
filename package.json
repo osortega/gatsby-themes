@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "@maiertech/gatsby-themes",
+  "description": "Gatsby themes for maier.tech websites.",
+  "repository": "https://github.com/maiertech/gatsby-themes",
+  "author": "Thilo Maier <git@maier.asia>",
+  "license": "MIT",
+  "workspaces": [
+    "examples/*",
+    "themes/*"
+  ],
+  "devDependencies": {
+    "lerna": "^3.13.1"
+  }
+}
