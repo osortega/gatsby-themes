@@ -1,0 +1,37 @@
+{
+  "private": true,
+  "name": "@maiertech/gatsby-plugin-blog",
+  "version": "0.0.0",
+  "author": "Thilo Maier <git@maier.asia>",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "/*.js"
+  ],
+  "scripts": {
+    "build": "babel src --out-dir . --ignore **/__tests__",
+    "inspect": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "prepare": "npm run build",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.3.14"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/runtime": "^7.4.3",
+    "babel-jest": "^24.7.1",
+    "babel-preset-gatsby-package": "^0.1.4",
+    "jest": "^24.7.1"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  }
+}
