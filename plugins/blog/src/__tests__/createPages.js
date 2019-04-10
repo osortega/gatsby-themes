@@ -3,6 +3,7 @@ import { createPages } from '../gatsby-node';
 // Result of mock GraphQL query.
 const result = [
   {
+    id: '0dce098c-f1b8-499e-8112-d72261bfe82d',
     fields: {
       type: 'post',
       slug: 'third-post',
@@ -15,6 +16,7 @@ const result = [
     },
   },
   {
+    id: 'c3aa29c6-0e68-4675-96b4-c698de3b88a3',
     fields: {
       type: 'post',
       slug: 'second-post',
@@ -27,6 +29,7 @@ const result = [
     },
   },
   {
+    id: '287a61da-8bf6-4332-ae86-446856ee5007',
     fields: {
       type: 'post',
       slug: 'first-post',
@@ -68,7 +71,11 @@ describe('createPages', () => {
     expect(createPage).toHaveBeenCalledWith({
       path: '/first-post',
       component: 'path/to/template',
-      context: { next: null, prev: null },
+      context: {
+        id: '287a61da-8bf6-4332-ae86-446856ee5007',
+        next: null,
+        prev: null,
+      },
     });
   });
 
@@ -87,6 +94,7 @@ describe('createPages', () => {
       path: '/second-post',
       component: 'path/to/template',
       context: {
+        id: 'c3aa29c6-0e68-4675-96b4-c698de3b88a3',
         next: null,
         prev: {
           path: '/first-post',
@@ -98,6 +106,7 @@ describe('createPages', () => {
       path: '/first-post',
       component: 'path/to/template',
       context: {
+        id: '287a61da-8bf6-4332-ae86-446856ee5007',
         next: {
           path: '/second-post',
           title: 'Second Post',
@@ -122,6 +131,7 @@ describe('createPages', () => {
       path: '/third-post',
       component: 'path/to/template',
       context: {
+        id: '0dce098c-f1b8-499e-8112-d72261bfe82d',
         next: null,
         prev: {
           path: '/second-post',
@@ -133,6 +143,7 @@ describe('createPages', () => {
       path: '/second-post',
       component: 'path/to/template',
       context: {
+        id: 'c3aa29c6-0e68-4675-96b4-c698de3b88a3',
         next: {
           path: '/third-post',
           title: 'Third Post',
@@ -147,6 +158,7 @@ describe('createPages', () => {
       path: '/first-post',
       component: 'path/to/template',
       context: {
+        id: '287a61da-8bf6-4332-ae86-446856ee5007',
         next: {
           path: '/second-post',
           title: 'Second Post',

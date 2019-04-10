@@ -76,29 +76,30 @@ export const createPages = async ({ graphql, actions }, { template }) => {
     }
   `);
 
-  posts.forEach(({ fields: { path } }, index) => {
+  posts.forEach(({ id, fields: { path } }, index) => {
     // Determine prev and next  posts. If none exists, set to null.
     let prev = index === posts.length - 1 ? null : posts[index + 1];
     if (prev) {
       const {
-        fields: { path: prevPath, date },
+        fields: { path },
         frontmatter: { title },
       } = prev;
-      prev = { date, path: prevPath, title };
+      prev = { path, title };
     }
     let next = index === 0 ? null : posts[index - 1];
     if (next) {
       const {
-        fields: { path: nextPath, date },
+        fields: { path },
         frontmatter: { title },
       } = next;
-      next = { date, path: nextPath, title };
+      next = { path, title };
     }
     // Template uses `path` to query page data.
     createPage({
       path,
       component: template,
       context: {
+        id,
         prev,
         next,
       },
