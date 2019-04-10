@@ -1,5 +1,4 @@
 {
-  "private": true,
   "name": "@maiertech/gatsby-plugin-blog",
   "version": "0.0.0",
   "author": "Thilo Maier <git@maier.asia>",
@@ -33,5 +32,8 @@
   },
   "jest": {
     "testEnvironment": "node"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
