@@ -46,7 +46,6 @@ You can use the following options:
 | `pathPrefix` | `""`    | Blog posts are mapped to `/<slug>` by default. If a `pathPrefix` is set, they are mapped to `<pathPrefix>/<slug>`.                         |
 | `postsDir`   | `posts` | The default is `posts` in one of your sources defined with `gatsby-source-filesystem`.                                                     |
 | `template`   |         | Bring your own template. Template receives `id`, `path` and `context`, which contains `prev` and `next`, which contain `path` and `title`. |
-|              |
 
 The frontmatter of each post needs to inlcude the following properties, which are used in the underlying GraphQL query:
 
