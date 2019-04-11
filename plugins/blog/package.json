@@ -1,7 +1,7 @@
 {
   "name": "@maiertech/gatsby-plugin-blog",
   "description": "This Gatsby plugin encapsulates the logic for programmatically creating post pages for a blog.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "repository": "https://github.com/maiertech/gatsby-themes/tree/master/plugins/blog",
   "author": "Thilo Maier <git@maier.asia>",
   "keywords": [

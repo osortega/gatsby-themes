@@ -1,6 +1,6 @@
 {
   "name": "@maiertech/gatsby-plugin-tags",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "This Gatsby plugin encapsulates the logic for programmatically creating tag pages.",
   "repository": "https://github.com/maiertech/gatsby-themes/tree/master/plugins/tags",
   "author": "Thilo Maier <git@maier.asia>",
