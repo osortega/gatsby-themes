@@ -1,14 +1,14 @@
 {
-  "name": "@maiertech/gatsby-plugin-blog",
-  "description": "This Gatsby plugin encapsulates the logic for programmatically creating post pages for a blog.",
-  "version": "0.2.0",
-  "repository": "https://github.com/maiertech/gatsby-themes/tree/master/plugins/blog",
+  "name": "@maiertech/gatsby-plugin-tags",
+  "version": "0.0.0",
+  "description": "This Gatsby plugin encapsulates the logic for programmatically creating tag pages.",
+  "repository": "https://github.com/maiertech/gatsby-themes/tree/master/plugins/tags",
   "author": "Thilo Maier <git@maier.asia>",
+  "license": "MIT",
   "keywords": [
     "gatsby",
     "gatsby-plugin"
   ],
-  "license": "MIT",
   "main": "index.js",
   "files": [
     "/*.js"
@@ -22,7 +22,7 @@
     "test:coverage": "jest --coverage"
   },
   "peerDependencies": {
-    "gatsby": "^2.3.14"
+    "gatsby": "^2.3.17"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.3",
