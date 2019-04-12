@@ -47,10 +47,10 @@ describe('createPages', () => {
     createPage.mockClear();
   });
 
-  test('default options', async () => {
+  it('default options', async () => {
     await createPages(
       {
-        graphql: async () => ({
+        graphql: () => ({
           data: { allMdx: { nodes: result } },
         }),
         actions,
@@ -119,10 +119,10 @@ describe('createPages', () => {
     });
   });
 
-  test('custom type', async () => {
+  it('custom type', async () => {
     await createPages(
       {
-        graphql: async () => ({
+        graphql: () => ({
           data: {
             allMdx: {
               nodes: [
@@ -161,11 +161,11 @@ describe('createPages', () => {
     });
   });
 
-  test('no item has tags', async () => {
+  it('no item has tags', async () => {
     // Remove tags from posts.
     await createPages(
       {
-        graphql: async () => ({
+        graphql: () => ({
           data: {
             allMdx: {
               nodes: result.map(

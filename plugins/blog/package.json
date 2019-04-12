@@ -15,8 +15,10 @@
   ],
   "scripts": {
     "build": "babel src --out-dir . --ignore **/__tests__",
-    "inspect": "node --inspect-brk node_modules/.bin/jest --runInBand",
     "prepare": "npm run build",
+    "inspect": "node --inspect-brk node_modules/.bin/jest --runInBand",
+    "lint": "eslint . --ignore-path .gitignore",
+    "lint:fix": "eslint . --ignore-path .gitignore --fix",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
@@ -30,6 +32,8 @@
     "@babel/runtime": "^7.4.3",
     "babel-jest": "^24.7.1",
     "babel-preset-gatsby-package": "^0.1.4",
+    "eslint": "^5.16.0",
+    "eslint-plugin-shopify": "^27.0.1",
     "jest": "^24.7.1"
   },
   "jest": {

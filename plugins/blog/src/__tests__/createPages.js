@@ -57,10 +57,10 @@ describe('createPages', () => {
     createPage.mockClear();
   });
 
-  test('1 blog post', async () => {
+  it('1 blog post', async () => {
     await createPages(
       {
-        graphql: async () => ({
+        graphql: () => ({
           data: { allMdx: { nodes: result.slice(2, 3) } },
         }),
         actions,
@@ -79,10 +79,10 @@ describe('createPages', () => {
     });
   });
 
-  test('2 blog posts', async () => {
+  it('2 blog posts', async () => {
     await createPages(
       {
-        graphql: async () => ({
+        graphql: () => ({
           data: { allMdx: { nodes: result.slice(1, 3) } },
         }),
         actions,
@@ -116,10 +116,10 @@ describe('createPages', () => {
     });
   });
 
-  test('3 blog posts', async () => {
+  it('3 blog posts', async () => {
     await createPages(
       {
-        graphql: async () => ({
+        graphql: () => ({
           data: { allMdx: { nodes: result.slice(0, 3) } },
         }),
         actions,

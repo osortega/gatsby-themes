@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "plugin:shopify/esnext",
+    "plugin:shopify/jest",
+    "plugin:shopify/prettier"
+  ],
+  "rules": {
+    "babel/object-curly-spacing": ["error", "always"],
+    "no-unused-vars": ["error", { "ignoreRestSiblings": true }]
+  }
+}

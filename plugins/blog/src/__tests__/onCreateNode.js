@@ -23,7 +23,7 @@ describe('onCreateNode', () => {
     createNodeField.mockClear();
   });
 
-  test('default options', () => {
+  it('default options', () => {
     onCreateNode({ node, getNode, actions }, {});
 
     // Type.
@@ -56,7 +56,7 @@ describe('onCreateNode', () => {
     });
   });
 
-  test('overwrite slug in frontmatter', () => {
+  it('overwrite slug in frontmatter', () => {
     const { frontmatter, ...rest } = node;
     const nodeWithSlugOverwritten = {
       ...rest,
@@ -72,7 +72,7 @@ describe('onCreateNode', () => {
     });
   });
 
-  test('overwrite lead in frontmatter', () => {
+  it('overwrite lead in frontmatter', () => {
     const { frontmatter, ...rest } = node;
     const nodeWithLeadOverwritten = {
       ...rest,
@@ -88,7 +88,7 @@ describe('onCreateNode', () => {
     });
   });
 
-  test('custom pathPrefix', () => {
+  it('custom pathPrefix', () => {
     onCreateNode({ node, getNode, actions }, { pathPrefix: '/blog' });
 
     expect(createNodeField).toHaveBeenNthCalledWith(3, {
@@ -98,7 +98,7 @@ describe('onCreateNode', () => {
     });
   });
 
-  test('custom postsDir', () => {
+  it('custom postsDir', () => {
     onCreateNode(
       {
         node,
@@ -115,7 +115,7 @@ describe('onCreateNode', () => {
     });
   });
 
-  test('pagesDir does not match', () => {
+  it('pagesDir does not match', () => {
     onCreateNode(
       {
         node,
@@ -127,7 +127,7 @@ describe('onCreateNode', () => {
     expect(createNodeField).toHaveBeenCalledTimes(0);
   });
 
-  test('not type Mdx', () => {
+  it('not type Mdx', () => {
     onCreateNode({ node: { internal: { type: 'NotMdx' } }, actions }, {});
     expect(createNodeField).toHaveBeenCalledTimes(0);
   });

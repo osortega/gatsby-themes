@@ -81,18 +81,18 @@ export const createPages = async ({ graphql, actions }, { template }) => {
     let prev = index === posts.length - 1 ? null : posts[index + 1];
     if (prev) {
       const {
-        fields: { path },
+        fields: { path: prevPath },
         frontmatter: { title },
       } = prev;
-      prev = { path, title };
+      prev = { path: prevPath, title };
     }
     let next = index === 0 ? null : posts[index - 1];
     if (next) {
       const {
-        fields: { path },
+        fields: { path: nextPath },
         frontmatter: { title },
       } = next;
-      next = { path, title };
+      next = { path: nextPath, title };
     }
     // Template uses `path` to query page data.
     createPage({
