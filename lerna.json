@@ -1,5 +1,13 @@
 {
-  "packages": ["site", "themes/*"],
+  "command": {
+    "publish": {
+      "allowBranch": "master",
+      "conventionalCommits": true,
+      "createRelease": "github",
+      "message": "chore(release): Publish"
+    }
+  },
+  "packages": ["themes/*"],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "version": "independent"
