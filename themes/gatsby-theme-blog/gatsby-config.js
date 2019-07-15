@@ -1,23 +1,27 @@
-module.exports = {
+module.exports = ({
+  assetPath = 'content/assets/posts',
+  basePath = '/',
+  contentPath = 'content/posts',
+}) => ({
   siteMetadata: {
     title: 'Title placeholder from @maiertech/gatsby-theme-blog',
-    basePath: '/',
+    basePath,
   },
   plugins: [
     { resolve: 'gatsby-plugin-mdx', options: {} },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: 'content/posts',
+        path: contentPath,
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        path: 'content/assets/posts',
+        path: assetPath,
       },
     },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
   ],
-};
+});
