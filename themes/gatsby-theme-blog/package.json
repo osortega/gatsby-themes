@@ -12,7 +12,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "gatsby clean",
-    "rimraf": "rm -rf ./node_modules"
+    "purge": "rm -rf ./node_modules"
   },
   "peerDependencies": {
     "gatsby": "^2.3.21",

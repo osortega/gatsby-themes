@@ -169,6 +169,7 @@ describe('createPages', () => {
           data: {
             allMdx: {
               nodes: result.map(
+                // eslint-disable-next-line no-unused-vars
                 ({ fields, frontmatter: { tags, ...rest } }) => ({
                   fields,
                   frontmatter: { ...rest },
