@@ -14,7 +14,8 @@
   "forwardPorts": [8000],
   "postCreateCommand": "yarn install",
   "containerEnv": {
-    "GATSBY_TELEMETRY_DISABLED": "1"
+    "GATSBY_TELEMETRY_DISABLED": "1",
+    "GATSBY_EXPERIMENTAL_ROUTING_APIS": "1"
   },
   "remoteUser": "node"
 }
