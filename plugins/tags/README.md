@@ -1,7 +1,8 @@
 # @maiertech/gatsby-plugin-tags
 
-This plugin can be used with a Gatsby project or with a [Gatsby theme](https://www.gatsbyjs.org/docs/themes/).
-It encapsulates the logic for programmatically creating tag pages.
+This plugin can be used with a Gatsby project or with a
+[Gatsby theme](https://www.gatsbyjs.org/docs/themes/). It encapsulates the logic
+for programmatically creating tag pages.
 
 ## Installation
 
@@ -31,7 +32,8 @@ Add `@maiertech/gatsby-plugin-tags` to your `plugins` array in `gatsby-node.js`:
 }
 ```
 
-You can create multiple sets of tag pages for different types. Add one configuration per type. Here is another configuration:
+You can create multiple sets of tag pages for different types. Add one
+configuration per type. Here is another configuration:
 
 ```js
 {
@@ -44,7 +46,8 @@ You can create multiple sets of tag pages for different types. Add one configura
 }
 ```
 
-The frontmatter of each item to be tagged needs to include the following properties:
+The frontmatter of each item to be tagged needs to include the following
+properties:
 
 | Property | Type             | Description |
 | :------- | :--------------- | :---------- |

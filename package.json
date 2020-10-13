@@ -1,21 +1,25 @@
 {
   "private": true,
-  "name": "@maiertech/gatsby-themes",
-  "description": "Gatsby themes for maier.tech websites.",
-  "repository": "https://github.com/maiertech/gatsby-themes",
-  "author": "Thilo Maier <git@maier.asia>",
-  "license": "MIT",
   "workspaces": [
     "site",
     "themes/*"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn run lint"
+    }
+  },
   "scripts": {
-    "clean": "yarn workspaces run clean",
-    "rimraf": "rm -rf ./node_modules && yarn workspaces run rimraf",
-    "lint": "eslint . --ignore-path .gitignore",
-    "format": "pretty-quick",
-    "test": "yarn workspaces run test",
-    "coverage": "yarn workspaces run coverage"
+    "prettier": "prettier . --ignore-path .gitignore",
+    "lint": "run-s lint:*",
+    "lint:eslint": "eslint . --ignore-path .gitignore",
+    "lint:prettier": "yarn run prettier --check",
+    "format": "run-s format:*",
+    "format:eslint": "yarn run lint:eslint --fix",
+    "format:prettier": "yarn run prettier --write",
+    "purge": "rm -rf ./node_modules && yarn workspaces run purge",
+    "test": "yarn workspaces run test"
   },
   "lint-staged": {
     "*.js": [
@@ -23,20 +27,14 @@
       "git add"
     ]
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged && lint-staged"
-    }
-  },
   "devDependencies": {
-    "husky": "^3.0.0",
-    "lerna": "^3.13.1",
-    "lint-staged": "^9.2.0",
-    "prettier": "^1.16.4",
-    "pretty-quick": "^1.10.0"
-  },
-  "dependencies": {
-    "eslint": "^6.0.1",
-    "eslint-plugin-shopify": "^29.0.2"
+    "@maiertech/prettier-config": "0.2.1",
+    "eslint": "6.0.1",
+    "eslint-plugin-shopify": "29.0.2",
+    "husky": "3.0.0",
+    "lerna": "3.13.1",
+    "lint-staged": "9.2.0",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.1.2"
   }
 }

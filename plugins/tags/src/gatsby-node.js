@@ -38,7 +38,7 @@ export const createPages = async (
 
   items.forEach(({ fields: { path }, frontmatter: { title, date, tags } }) => {
     if (tags) {
-      tags.forEach(tag => {
+      tags.forEach((tag) => {
         if (!itemsByTags[tag]) {
           itemsByTags[tag] = [];
         }
@@ -53,7 +53,7 @@ export const createPages = async (
 
   // Create tag pages.
   const tags = Object.keys(itemsByTags);
-  tags.forEach(tag => {
+  tags.forEach((tag) => {
     const itemsByTag = itemsByTags[tag];
     createPage({
       path: `/${type}s/${tag}`,
