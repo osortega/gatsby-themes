@@ -2,8 +2,7 @@
   "private": true,
   "workspaces": [
     "site",
-    "plugins/*",
-    "themes/*"
+    "packages/*"
   ],
   "husky": {
     "hooks": {

@@ -1,1 +1,0 @@
-# @maiertech/gatsby-theme-blog
