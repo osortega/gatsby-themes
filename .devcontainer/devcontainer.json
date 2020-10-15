@@ -10,7 +10,11 @@
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
   },
-  "extensions": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode"],
+  "extensions": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "tyriar.lorem-ipsum"
+  ],
   "forwardPorts": [8000],
   "postCreateCommand": "yarn install",
   "containerEnv": {

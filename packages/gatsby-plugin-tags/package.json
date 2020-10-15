@@ -31,11 +31,7 @@
     "@babel/core": "^7.4.3",
     "@babel/runtime": "^7.4.3",
     "babel-jest": "^24.7.1",
-    "babel-preset-gatsby-package": "^0.1.4",
-    "jest": "^24.7.1"
-  },
-  "jest": {
-    "testEnvironment": "node"
+    "babel-preset-gatsby-package": "^0.1.4"
   },
   "publishConfig": {
     "access": "public"

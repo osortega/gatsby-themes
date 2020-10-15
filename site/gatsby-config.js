@@ -1,3 +1,6 @@
 module.exports = {
-  plugins: [],
+  plugins: [
+    'gatsby-plugin-mdx',
+    { resolve: '@maiertech/gatsby-theme-blog', options: {} },
+  ],
 };

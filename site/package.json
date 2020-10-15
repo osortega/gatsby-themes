@@ -6,15 +6,18 @@
   "author": "Thilo Maier <git@maier.asia>",
   "license": "MIT",
   "scripts": {
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "build": "gatsby build",
     "clean": "gatsby clean",
-    "inspect": "node --inspect-brk --no-lazy node_modules/.bin/gatsby develop",
+    "serve": "gatsby serve",
+    "inspect": "node --inspect-brk --nolazy node_modules/.bin/gatsby develop",
     "purge": "rm -rf ./node_modules"
   },
   "dependencies": {
-    "gatsby": "^2.8.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "@maiertech/gatsby-theme-blog": "*",
+    "gatsby": "2.24.77",
+    "gatsby-plugin-mdx": "^1.2.46",
+    "react": "16.14.0",
+    "react-dom": "16.14.0"
   }
 }
