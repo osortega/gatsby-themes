@@ -44,6 +44,7 @@ const generateNodeFromMdx = (
   }
 
   const nodeData = {
+    collection,
     ...node.frontmatter,
   };
 
@@ -61,8 +62,6 @@ const generateNodeFromMdx = (
     withRelativeDirectory ? slugify(relativeDirectory) : '',
     slugify(nodeData.title)
   );
-
-  nodeData.data = { ...node.frontmatter, rawBody: node.rawBody };
 
   return {
     id: createNodeId(`${nodeType}-${collection}-${node.id}`),

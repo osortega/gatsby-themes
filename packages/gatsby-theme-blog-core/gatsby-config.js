@@ -11,6 +11,7 @@ module.exports = (themeOptions) => {
           path: contentPath,
         },
       },
+      'gatsby-plugin-mdx',
     ],
   };
 };

@@ -14,9 +14,8 @@
     "purge": "rm -rf ./node_modules"
   },
   "dependencies": {
-    "@maiertech/gatsby-theme-blog": "*",
+    "@maiertech/gatsby-theme-blog-core": "*",
     "gatsby": "2.24.77",
-    "gatsby-plugin-mdx": "^1.2.46",
     "react": "16.14.0",
     "react-dom": "16.14.0"
   }

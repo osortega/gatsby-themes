@@ -1,5 +1,5 @@
 {
-  "name": "@maiertech/gatsby-theme-blog",
+  "name": "@maiertech/gatsby-theme-blog-core",
   "description": "This theme adds a Post type to Gatsby sites.",
   "version": "0.0.0",
   "main": "index.js",
@@ -20,15 +20,18 @@
   },
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "watch": "jest --watch",
     "purge": "rm -rf ./node_modules"
   },
   "peerDependencies": {
-    "gatsby": "^2.24.77"
+    "gatsby": "^2.24.77",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
   },
   "dependencies": {
     "@maiertech/gatsby-helpers": "*",
-    "gatsby-source-filesystem": "2.3.34"
+    "gatsby-plugin-mdx": "1.2.46",
+    "gatsby-source-filesystem": "2.3.34",
+    "prop-types": "15.7.2"
   }
 }

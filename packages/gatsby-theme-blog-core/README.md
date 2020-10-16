@@ -12,18 +12,18 @@ to add a `Post` type to Gatsby sites.
 
 ## Frontmatter
 
-| Key      | Required | Description                                                                                                                    |
-| :------- | :------- | :----------------------------------------------------------------------------------------------------------------------------- |
-| title    | ✓        | Post title, which will be slugified.                                                                                           |
-| date     | ✓        | Date in yyyy-MM-dd format. This is the date as it should appear on the website. There is no timezone magic happening anywhere. |
-| `author` | ✓        | Post author.                                                                                                                   |
+| Key         | Required | Description                                                               |
+| :---------- | :------- | :------------------------------------------------------------------------ |
+| title       | ✓        | Post title, which will be slugified.                                      |
+| author      | ✓        | Post author.                                                              |
+| date        | ✓        | Date in yyyy-MM-dd format. There is no timezone magic happening anywhere. |
+| description |
 
 ## Post type
 
 | Field      | Type      | Description                            |
 | :--------- | :-------- | :------------------------------------- |
 | id         | `ID!`     | Gatsby node GUID.                      |
-| slug       | `ID!`     | Alternate ID.                          |
 | collection | `String!` | Collection to which this post belongs. |
 | title      | `String!` |                                        |
 | author     | `String!` |                                        |
