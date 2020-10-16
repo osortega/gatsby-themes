@@ -2,11 +2,11 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "yarn workspace site run dev",
+      "name": "yarn workspace test run dev",
       "type": "pwa-node",
       "request": "launch",
-      "program": "${workspaceFolder}/site/node_modules/.bin/gatsby",
-      "cwd": "${workspaceFolder}/site",
+      "program": "${workspaceFolder}/sites/test/node_modules/.bin/gatsby",
+      "cwd": "${workspaceFolder}/sites/test",
       "args": ["develop"],
       "runtimeArgs": ["--nolazy"],
       "console": "integratedTerminal"

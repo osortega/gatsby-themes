@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "site",
+  "name": "test",
   "version": "0.0.0",
   "description": "Blog example website.",
   "author": "Thilo Maier <git@maier.asia>",
@@ -10,7 +10,6 @@
     "build": "gatsby build",
     "clean": "gatsby clean",
     "serve": "gatsby serve",
-    "inspect": "node --inspect-brk --nolazy node_modules/.bin/gatsby develop",
     "purge": "rm -rf ./node_modules"
   },
   "dependencies": {
