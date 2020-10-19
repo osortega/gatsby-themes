@@ -1,0 +1,39 @@
+{
+  "private": true,
+  "name": "@maiertech/gatsby-theme-tags-core",
+  "description": "This theme adds a Tag type to Gatsby sites.",
+  "version": "0.0.0",
+  "author": "Thilo Maier <git@maier.asia>",
+  "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maiertech/gatsby-themes.git",
+    "directory": "packages/gatsby-theme-tags-core"
+  },
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch",
+    "purge": "rm -rf ./node_modules"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.24.78",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },
+  "dependencies": {
+    "@maiertech/gatsby-helpers": "*",
+    "prop-types": "^15.7.2"
+  },
+  "devDependencies": {
+    "jest": "26.5.3"
+  }
+}

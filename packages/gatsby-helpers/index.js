@@ -21,59 +21,6 @@ const createPath = (...segments) => {
   return path.replace(/^\/*/, `/`).replace(/\/*$/, `/`);
 };
 
-// Helper to generate a node from Mdx parent node.
-const generateNodeFromMdx = (
-  collection,
-  nodeType,
-  node,
-  getNode,
-  createNodeId,
-  createContentDigest,
-  withRelativeDirectory = true
-) => {
-  // Process MDX nodes only.
-  if (node.internal.type !== 'Mdx') {
-    return;
-  }
-
-  // Parent (file node) makes `name` option from `gatsby-source-filesystem` available as `sourceInstanceName`.
-  // Process nodes from same collection only.
-  const parent = getNode(node.parent);
-  if (parent.sourceInstanceName !== collection) {
-    return;
-  }
-
-  const nodeData = {
-    collection,
-    ...node.frontmatter,
-  };
-
-  const { relativeDirectory, name } = parent;
-
-  // Fallback to the parent name if no title is set.
-  if (!node.frontmatter.title) {
-    nodeData.title = name;
-  }
-
-  nodeData.path = createPath(
-    '/',
-    collection,
-    // Decide whether or not to omit relativeDirectory in path.
-    withRelativeDirectory ? slugify(relativeDirectory) : '',
-    slugify(nodeData.title)
-  );
-
-  return {
-    id: createNodeId(`${nodeType}-${collection}-${node.id}`),
-    parent: node.id,
-    ...nodeData,
-    internal: {
-      type: nodeType,
-      contentDigest: createContentDigest(node.internal.contentDigest),
-    },
-  };
-};
-
 // Helper to resolve fields on Mdx nodes.
 const mdxResolverPassthrough = (fieldName) => async (
   source,
@@ -96,7 +43,6 @@ const mdxResolverPassthrough = (fieldName) => async (
 module.exports = {
   createPath,
   ensurePathExists,
-  generateNodeFromMdx,
   mdxResolverPassthrough,
   slugify,
 };

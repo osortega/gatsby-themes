@@ -1,0 +1,37 @@
+{
+  "name": "@maiertech/gatsby-theme-posts-core",
+  "description": "This theme adds a Post type to Gatsby sites.",
+  "version": "0.0.0",
+  "author": "Thilo Maier <git@maier.asia>",
+  "license": "MIT",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maiertech/gatsby-themes.git",
+    "directory": "packages/gatsby-theme-posts-core"
+  },
+  "main": "index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "test": "jest",
+    "watch": "jest --watch",
+    "purge": "rm -rf ./node_modules"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.24.77",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },
+  "dependencies": {
+    "@maiertech/gatsby-helpers": "*",
+    "gatsby-plugin-mdx": "1.2.46",
+    "gatsby-source-filesystem": "2.3.34",
+    "prop-types": "15.7.2"
+  }
+}

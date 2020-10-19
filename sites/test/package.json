@@ -2,7 +2,7 @@
   "private": true,
   "name": "test",
   "version": "0.0.0",
-  "description": "Blog example website.",
+  "description": "Example and test website used for dev.",
   "author": "Thilo Maier <git@maier.asia>",
   "license": "MIT",
   "scripts": {
@@ -13,8 +13,9 @@
     "purge": "rm -rf ./node_modules"
   },
   "dependencies": {
-    "@maiertech/gatsby-theme-blog-core": "*",
-    "gatsby": "2.24.77",
+    "@maiertech/gatsby-theme-posts-core": "*",
+    "@maiertech/gatsby-theme-tags-core": "*",
+    "gatsby": "2.24.80",
     "react": "16.14.0",
     "react-dom": "16.14.0"
   }
