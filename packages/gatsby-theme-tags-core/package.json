@@ -31,9 +31,6 @@
   },
   "dependencies": {
     "@maiertech/gatsby-helpers": "*",
-    "prop-types": "^15.7.2"
-  },
-  "devDependencies": {
-    "jest": "26.5.3"
+    "prop-types": "15.7.2"
   }
 }
