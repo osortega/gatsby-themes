@@ -2,8 +2,8 @@ const { createPath, slugify } = require('@maiertech/gatsby-helpers');
 
 const withDefaults = require('./theme-options');
 
+/* istanbul ignore next */
 module.exports.createSchemaCustomization = ({ actions }) => {
-  /* istanbul ignore next */
   actions.createTypes(`
     interface Tag @nodeInterface {
       id: ID!

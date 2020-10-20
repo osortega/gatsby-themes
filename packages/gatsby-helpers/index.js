@@ -4,6 +4,7 @@ const { join } = require('path');
 const slugify = require('@sindresorhus/slugify');
 
 // Helper to ensure that a path exists.
+/* istanbul ignore next */
 const ensurePathExists = (path, reporter) => {
   if (existsSync(path)) {
     return;
@@ -22,6 +23,7 @@ const createPath = (...segments) => {
 };
 
 // Helper to resolve fields on Mdx nodes.
+/* istanbul ignore next */
 const mdxResolverPassthrough = (fieldName) => async (
   source,
   args,

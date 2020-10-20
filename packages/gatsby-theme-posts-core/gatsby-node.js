@@ -7,11 +7,13 @@ const {
 
 const withDefaults = require('./theme-options');
 
+/* istanbul ignore next */
 module.exports.onPreBootstrap = ({ reporter }, themeOptions) => {
   const { contentPath } = withDefaults(themeOptions);
   ensurePathExists(contentPath, reporter);
 };
 
+/* istanbul ignore next */
 module.exports.createSchemaCustomization = ({ actions }) => {
   actions.createTypes(`
     interface Post @nodeInterface {
@@ -38,6 +40,7 @@ module.exports.createSchemaCustomization = ({ actions }) => {
   `);
 };
 
+/* istanbul ignore next */
 module.exports.createResolvers = ({ createResolvers }) => {
   createResolvers({
     MdxPost: { body: { resolve: mdxResolverPassthrough('body') } },
@@ -45,10 +48,10 @@ module.exports.createResolvers = ({ createResolvers }) => {
 };
 
 module.exports.onCreateNode = (
-  { actions, createNodeId, createContentDigest, getNode, node },
+  { actions, node, getNode, createNodeId, createContentDigest },
   themeOptions
 ) => {
-  const { collection, fullRelativePath } = withDefaults(themeOptions);
+  const { basePath, collection, fullRelativePath } = withDefaults(themeOptions);
 
   // Process MDX nodes only.
   if (node.internal.type !== 'Mdx') {
@@ -70,7 +73,7 @@ module.exports.onCreateNode = (
   const { relativeDirectory } = parent;
 
   nodeData.path = createPath(
-    '/',
+    basePath,
     collection,
     // Decide whether or not to omit relativeDirectory in path.
     fullRelativePath ? slugify(relativeDirectory) : '',
@@ -111,7 +114,7 @@ module.exports.createPages = async (
 ) => {
   const { createPage } = actions;
   const options = withDefaults(themeOptions);
-  const { collection } = options;
+  const { basePath, collection } = options;
 
   // Query all posts that belong to the same collection.
   // Sort order matters to determine next and previous posts.
@@ -140,7 +143,7 @@ module.exports.createPages = async (
 
   // Create posts page.
   createPage({
-    path: createPath(collection),
+    path: createPath(basePath, collection),
     component: require.resolve('./src/templates/posts-query.js'),
     context: {
       collection,

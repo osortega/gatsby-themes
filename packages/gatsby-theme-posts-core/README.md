@@ -7,6 +7,7 @@ to add a `Post` type to Gatsby sites.
 
 | Option             | Default         | Description                                                                                                                                                                |
 | :----------------- | :-------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `basePath`         | `/`             | Basepath for deployments at locations other than root.                                                                                                                     |
 | `collection`       | `posts`         | The collection is added as field to `Post` nodes. The basepath is `/<collection>`.                                                                                         |
 | `contentPath`      | `content/posts` | Location of MDX files with posts. Each post is located in a sub-directory as `index.mdx` together with its assets. The sub-directory name is the post ID and default slug. |
 | `fullRelativePath` | `false`         | Set to `true` to include full path relative to `contentPath` in path of generated posts.                                                                                   |
