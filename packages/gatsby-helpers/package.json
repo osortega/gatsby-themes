@@ -2,19 +2,19 @@
   "name": "@maiertech/gatsby-helpers",
   "description": "Utility helpers for Gatsby used by other packages.",
   "version": "0.1.0",
-  "main": "index.js",
   "author": "Thilo Maier <git@maier.asia>",
   "license": "MIT",
-  "publishConfig": {
-    "access": "public"
-  },
-  "keywords": [
-    "gatsby"
-  ],
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/maiertech/gatsby-themes.git",
     "directory": "packages/gatsby-helpers"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "purge": "rm -rf ./node_modules"

@@ -4,17 +4,17 @@
   "version": "0.1.0",
   "author": "Thilo Maier <git@maier.asia>",
   "license": "MIT",
-  "keywords": [
-    "gatsby",
-    "gatsby-plugin",
-    "gatsby-theme"
-  ],
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/maiertech/gatsby-themes.git",
     "directory": "packages/gatsby-theme-posts-core"
   },
-  "main": "index.js",
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme"
+  ],
   "publishConfig": {
     "access": "public"
   },
