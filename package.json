@@ -11,6 +11,8 @@
     }
   },
   "scripts": {
+    "version": "changeset version && yarn run format",
+    "release": "changeset publish",
     "prettier": "prettier . --ignore-path .gitignore",
     "lint": "run-s lint:*",
     "lint:eslint": "eslint . --ignore-path .gitignore",
@@ -20,8 +22,7 @@
     "format:prettier": "yarn run prettier --write",
     "purge": "rm -rf ./node_modules && yarn workspaces run purge",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
     "@changesets/cli": "2.11.1",

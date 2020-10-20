@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # Fetch entire Git history so changesets can generate changelogs.
+          fetch-depth: 0
+          # Prevent persisting automatically generated token to allow overriding GITHUB_TOKEN with personal access token.
+          persist-credentials: false
+      - uses: actions/setup-node@v2.1.1
+        with:
+          node-version: '12'
+      - run: yarn install --frozen-lockfile
+      - uses: changesets/action@master
+        with:
+          version: yarn run version
+          publish: yarn run release
+          commit: Publish packages
+          title: Publish packages
+        env:
+          # Overwrite GITHUB_TOKEN with personal access token to trigger configured workflows.
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
