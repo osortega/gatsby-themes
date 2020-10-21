@@ -19,8 +19,6 @@
     "access": "public"
   },
   "scripts": {
-    "test": "jest",
-    "watch": "jest --watch",
     "purge": "rm -rf ./node_modules"
   },
   "peerDependencies": {
@@ -29,7 +27,7 @@
     "react-dom": "^16.14.0"
   },
   "dependencies": {
-    "@maiertech/gatsby-helpers": "*",
+    "@maiertech/gatsby-helpers": "0.1.0",
     "prop-types": "15.7.2"
   }
 }

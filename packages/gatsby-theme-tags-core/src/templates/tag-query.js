@@ -7,7 +7,7 @@ export default TagPage;
 export const query = graphql`
   query($name: String!, $mdxCollections: [String!]!) {
     allMdx(
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { fields: frontmatter___date, order: DESC }
       filter: {
         fields: { collection: { in: $mdxCollections } }
         frontmatter: { tags: { in: [$name] } }
