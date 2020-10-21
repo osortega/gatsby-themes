@@ -1,3 +1,3 @@
 # @maiertech/gatsby-themes
 
-Gatsby themes for maier.tech websites.
+Gatsby themes for @maiertech and @454de6e websites.
