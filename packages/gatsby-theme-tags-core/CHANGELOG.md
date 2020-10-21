@@ -1,5 +1,16 @@
 # @maiertech/gatsby-theme-tags-core
 
+## 0.3.0
+
+### Minor Changes
+
+- 9afd708: Add useTags hook
+
+### Patch Changes
+
+- Updated dependencies [9afd708]
+  - @maiertech/gatsby-helpers@0.2.0
+
 ## 0.2.0
 
 ### Minor Changes

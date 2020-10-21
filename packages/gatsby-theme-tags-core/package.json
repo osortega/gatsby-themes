@@ -1,7 +1,7 @@
 {
   "name": "@maiertech/gatsby-theme-tags-core",
   "description": "This theme adds a Tag type to Gatsby sites.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Thilo Maier <git@maier.asia>",
   "license": "MIT",
   "main": "index.js",
@@ -27,7 +27,7 @@
     "react-dom": "^16.14.0"
   },
   "dependencies": {
-    "@maiertech/gatsby-helpers": "0.1.0",
+    "@maiertech/gatsby-helpers": "0.2.0",
     "prop-types": "15.7.2"
   }
 }

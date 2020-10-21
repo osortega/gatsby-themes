@@ -1,5 +1,16 @@
 # @maiertech/gatsby-theme-posts-core
 
+## 0.2.0
+
+### Minor Changes
+
+- a74b5cc: Add usePosts hook
+
+### Patch Changes
+
+- Updated dependencies [9afd708]
+  - @maiertech/gatsby-helpers@0.2.0
+
 ## 0.1.0
 
 ### Minor Changes
