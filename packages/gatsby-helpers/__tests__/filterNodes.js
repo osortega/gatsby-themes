@@ -3,7 +3,16 @@ const { filterNodes } = require('../index');
 describe('filterNodes', () => {
   it('no nodes', () => {
     const filteredNodes = filterNodes({ allPost: {} });
+
     expect(filteredNodes).toStrictEqual([]);
+  });
+
+  it('no filter', () => {
+    const filteredNodes = filterNodes({
+      allPost: { nodes: [{ title: 'A post title' }] },
+    });
+
+    expect(filteredNodes).toStrictEqual([{ title: 'A post title' }]);
   });
 
   // Standard use case for tags: filter by collection and tag.

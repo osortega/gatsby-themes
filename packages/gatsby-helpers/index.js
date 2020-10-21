@@ -1,7 +1,7 @@
 const { existsSync, mkdirSync } = require('fs');
 const { join } = require('path');
 
-const filter = require('lodash.filter');
+const _filter = require('lodash.filter');
 const slugify = require('@sindresorhus/slugify');
 
 // Helper to create path from segments and add leading and trailing /.
@@ -24,14 +24,14 @@ function ensurePathExists(path, reporter) {
 }
 
 // https://lodash.com/docs/4.17.15#filter
-function filterNodes(data, filters) {
+function filterNodes(data, filter) {
   // Figure out key name, e.g. `allPost` or `allTag`.
   const key = Object.keys(data)[0];
   const nodes = data[key].nodes;
 
   if (!nodes) return [];
 
-  return filter(nodes, filters);
+  return _filter(nodes, filter);
 }
 
 // Helper to resolve fields on Mdx nodes.

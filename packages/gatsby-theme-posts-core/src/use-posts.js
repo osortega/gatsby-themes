@@ -1,14 +1,14 @@
 import { useStaticQuery, graphql } from 'gatsby';
 import { filterNodes } from '@maiertech/gatsby-helpers';
 
-export const useTags = (filter) => {
-  // This static query cannot be restricted to a specific collection of tags.
+export const usePosts = (filter) => {
+  // This static query cannot be restricted to a specific collection of posts.
   // This can be done by applying a filter.
   const data = useStaticQuery(graphql`
     query {
-      allTag(sort: { fields: [name, collection], order: [ASC, ASC] }) {
+      allPost(sort: { fields: [date, title], order: [DESC, ASC] }) {
         nodes {
-          ...TagFragment
+          ...PostFragment
         }
       }
     }
