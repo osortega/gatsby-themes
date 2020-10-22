@@ -1,14 +1,14 @@
 # @maiertech/gatsby-theme-tags-core
 
 A [Gatsby theme](https://www.gatsbyjs.com/docs/themes/what-are-gatsby-themes/)
-to add a `Tag` type to Gatsby sites.
+to add a `Tag` interface and `MdxTag` type to Gatsby sites.
 
 ## Options
 
 | Option           | Default | Description                                                                                                                                                       |
 | :--------------- | :------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `basePath`       | `/`     | Basepath for deployments at locations other than root.                                                                                                            |
-| `tagCollection`  | tags    | The collection is added as field to `Tag` nodes. The base path is `/<collection>`.                                                                                |
+| `tagCollection`  | tags    | The tag collection is added to `Tag` nodes. It is also part of the path.                                                                                          |
 | `mdxCollections` | `[]`    | Array of collections from which the theme collects tags. The theme looks at the `collection` field of `Mdx` nodes. If array is empty, no tag pages are generated. |
 
 ## Frontmatter
@@ -33,8 +33,8 @@ This table shows the fields required in tagged MDX pages:
 
 ## `Tag` type
 
-| Field | Type      | Description       |
-| :---- | :-------- | :---------------- |
-| id    | `ID!`     | Gatsby node GUID. |
-| name  | `String!` | Tag name.         |
-| path  | `String!` | Tag page path.    |
+| Field | Type      | Description                                                                                         |
+| :---- | :-------- | :-------------------------------------------------------------------------------------------------- |
+| id    | `ID!`     | Gatsby node GUID.                                                                                   |
+| name  | `String!` | Tag name.                                                                                           |
+| path  | `String!` | Path to generated tag page starts with `basePath`, then `tagCollection`, then the slugified `name`. |
