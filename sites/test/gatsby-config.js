@@ -1,5 +1,14 @@
 module.exports = {
   plugins: [
+    'gatsby-plugin-mdx',
+    {
+      resolve: '@maiertech/gatsby-theme-pages-core',
+      options: {
+        contentPath: 'content/pages',
+        fullRelativePath: true,
+        mdxOtherwiseConfigured: true,
+      },
+    },
     {
       resolve: '@maiertech/gatsby-theme-posts-core',
       options: { collection: 'posts', contentPath: 'content/posts' },

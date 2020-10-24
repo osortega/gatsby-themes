@@ -1,0 +1,40 @@
+{
+  "name": "@maiertech/gatsby-theme-pages-core",
+  "description": "This theme adds a Page type to Gatsby sites.",
+  "version": "0.0.0",
+  "author": "Thilo Maier <git@maier.asia>",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maiertech/gatsby-themes.git",
+    "directory": "packages/gatsby-theme-pages-core"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "purge": "rm -rf ./node_modules"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.24.83",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "theme-ui": "^0.3.1"
+  },
+  "dependencies": {
+    "@maiertech/gatsby-helpers": "0.2.0",
+    "@mdx-js/mdx": "1.6.19",
+    "@mdx-js/react": "1.6.19",
+    "gatsby-plugin-mdx": "1.2.51",
+    "gatsby-plugin-sharp": "2.6.43",
+    "gatsby-source-filesystem": "2.3.35",
+    "gatsby-transformer-sharp": "2.5.19",
+    "prop-types": "15.7.2"
+  }
+}
