@@ -1,9 +1,12 @@
 const withDefaults = require('./theme-options');
 
 module.exports = (themeOptions) => {
-  const { collection, contentPath } = withDefaults(themeOptions);
+  const { collection, contentPath, mdxOtherwiseConfigured } = withDefaults(
+    themeOptions
+  );
   return {
     plugins: [
+      !mdxOtherwiseConfigured && { resolve: 'gatsby-plugin-mdx', options: {} },
       {
         resolve: `gatsby-source-filesystem`,
         options: {
@@ -11,7 +14,6 @@ module.exports = (themeOptions) => {
           path: contentPath,
         },
       },
-      'gatsby-plugin-mdx',
-    ],
+    ].filter(Boolean),
   };
 };

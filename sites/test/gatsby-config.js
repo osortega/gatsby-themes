@@ -11,11 +11,19 @@ module.exports = {
     },
     {
       resolve: '@maiertech/gatsby-theme-posts-core',
-      options: { collection: 'posts', contentPath: 'content/posts' },
+      options: {
+        collection: 'posts',
+        contentPath: 'content/posts',
+        mdxOtherwiseConfigured: true,
+      },
     },
     {
       resolve: '@maiertech/gatsby-theme-posts-core',
-      options: { collection: 'news', contentPath: 'content/news' },
+      options: {
+        collection: 'news',
+        contentPath: 'content/news',
+        mdxOtherwiseConfigured: true,
+      },
     },
     {
       resolve: '@maiertech/gatsby-theme-tags-core',

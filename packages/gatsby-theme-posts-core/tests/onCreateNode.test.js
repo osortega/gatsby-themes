@@ -39,7 +39,7 @@ describe('onCreateNode', () => {
     expect(createNode).not.toHaveBeenCalled();
   });
 
-  it('processed Mdx node is from wrong collection', () => {
+  it('process Mdx node from wrong collection', () => {
     onCreateNode(
       {
         actions,
@@ -71,7 +71,7 @@ describe('onCreateNode', () => {
       createContentDigest,
     });
 
-    // Check that one MdxNode has been created.
+    // Check that one MdxPost has been created.
     expect(createNode).toHaveBeenCalledTimes(1);
     expect(createNode).toHaveBeenCalledWith({
       id: 'id',

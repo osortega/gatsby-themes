@@ -19,8 +19,6 @@
     "access": "public"
   },
   "scripts": {
-    "test": "jest",
-    "watch": "jest --watch",
     "purge": "rm -rf ./node_modules"
   },
   "peerDependencies": {
@@ -30,8 +28,8 @@
   },
   "dependencies": {
     "@maiertech/gatsby-helpers": "0.2.0",
-    "gatsby-plugin-mdx": "1.2.46",
-    "gatsby-source-filesystem": "2.3.34",
+    "gatsby-plugin-mdx": "1.2.51",
+    "gatsby-source-filesystem": "2.3.35",
     "prop-types": "15.7.2"
   }
 }
