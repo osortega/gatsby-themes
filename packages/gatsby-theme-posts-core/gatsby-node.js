@@ -20,9 +20,10 @@ module.exports.createSchemaCustomization = ({ actions }) => {
       id: ID!
       collection: String!
       title: String!
-      author: String!
-      date: Date! @dateformat
+      author: String
+      date: Date @dateformat
       description: String!
+      tags: [String!]
       body: String!
       path: String!
     }
@@ -31,9 +32,10 @@ module.exports.createSchemaCustomization = ({ actions }) => {
       id: ID!
       collection: String!
       title: String!
-      author: String!
-      date: Date! @dateformat
+      author: String
+      date: Date @dateformat
       description: String!
+      tags: [String!]
       body: String!
       path: String!
     }

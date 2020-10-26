@@ -15,25 +15,30 @@ to add a `Post` interface and `MdxPost` type to Gatsby sites.
 
 ## Frontmatter
 
-| Key         | Required | Description                                                               |
-| :---------- | :------- | :------------------------------------------------------------------------ |
-| title       | ✓        | Post title, which will be slugified.                                      |
-| author      | ✓        | Post author.                                                              |
-| date        | ✓        | Date in yyyy-MM-dd format. There is no timezone magic happening anywhere. |
-| description | ✓        | Description for SEO and previews (text only).                             |
+| Key         | Required | Description                                                                                                                                                                                                                                                                                                 |
+| :---------- | :------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| title       | ✓        | Post title, which will be slugified.                                                                                                                                                                                                                                                                        |
+| author      |          | Post author.                                                                                                                                                                                                                                                                                                |
+| date        |          | Date in yyyy-MM-dd format. There is no timezone magic happening anywhere. Date is optional in the sense that every posts in a collection should have a date or no post should have a date. If the collection does not have dates, previous and next posts do not make sense, even though they are computed. |
+| description | ✓        | Description for SEO and previews (text only).                                                                                                                                                                                                                                                               |
+| tags        |          | For full tag support you need to install and configure [`@maiertech/gatsby-theme-tags-core`](https://github.com/maiertech/gatsby-themes/tree/454de6e/issue78/packages/gatsby-theme-tags-core).                                                                                                              |
+
+Author and date are optional to support using this theme to model notes in
+[`@maiertech/gatsby-theme-digital-garden`](https://github.com/maiertech/gatsby-themes/tree/master/packages/gatsby-theme-digital-garden).
 
 ## `Post` interface
 
-| Field       | Type      | Description                                                                                                                                                |
-| :---------- | :-------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| id          | `ID!`     | Gatsby node GUID.                                                                                                                                          |
-| collection  | `String!` | Collection to which this post belongs.                                                                                                                     |
-| title       | `String!` | From frontmatter.                                                                                                                                          |
-| author      | `String!` | From frontmatter.                                                                                                                                          |
-| date        | `Date!`   | From frontmatter.                                                                                                                                          |
-| description | `String!` | From frontmatter.                                                                                                                                          |
-| body        | `String!` | String representation of post body.                                                                                                                        |
-| path        | `String!` | Path to generated page starts with `basePath`, then `collection`, then full relative path if `fullRelativePath` is `true`, then slug derived from `title`. |
+| Field       | Type        | Description                                                                                                                                                |
+| :---------- | :---------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| id          | `ID!`       | Gatsby node GUID.                                                                                                                                          |
+| collection  | `String!`   | Collection to which this post belongs.                                                                                                                     |
+| title       | `String!`   | From frontmatter.                                                                                                                                          |
+| author      | `String`    | From frontmatter.                                                                                                                                          |
+| date        | `Date`      | From frontmatter.                                                                                                                                          |
+| description | `String!`   | From frontmatter.                                                                                                                                          |
+| tags        | `[String!]` | From frontmatter.                                                                                                                                          |
+| body        | `String!`   | String representation of post body.                                                                                                                        |
+| path        | `String!`   | Path to generated page starts with `basePath`, then `collection`, then full relative path if `fullRelativePath` is `true`, then slug derived from `title`. |
 
 Type `MdxPost` implements `Post`. If you prefer to use a data source other than
 MDX files, you can write a child theme that implements the `Post` interface.

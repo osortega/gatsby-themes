@@ -26,8 +26,21 @@ module.exports = {
       },
     },
     {
+      resolve: '@maiertech/gatsby-theme-posts-core',
+      options: {
+        collection: 'notes',
+        contentPath: 'content/notes',
+        fullRelativePath: true,
+        mdxOtherwiseConfigured: true,
+      },
+    },
+    {
       resolve: '@maiertech/gatsby-theme-tags-core',
-      options: { mdxCollections: ['posts', 'news'] },
+      options: { tagCollection: 'tags', mdxCollections: ['posts', 'news'] },
+    },
+    {
+      resolve: '@maiertech/gatsby-theme-tags-core',
+      options: { tagCollection: 'notes/tags', mdxCollections: ['notes'] },
     },
   ],
 };
