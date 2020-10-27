@@ -1,81 +1,9 @@
-const { createPath, slugify } = require('@maiertech/gatsby-helpers');
+const { createPath } = require('@maiertech/gatsby-helpers');
 
-const withDefaults = require('./theme-options');
+const createTagPath = require('./utils/create-tag-path');
+const withDefaults = require('./utils/theme-options');
 
-/* istanbul ignore next */
-module.exports.createSchemaCustomization = ({ actions }) => {
-  actions.createTypes(`
-    interface Tag @nodeInterface {
-      id: ID!
-      collection: String!
-      name: String!
-      path: String!
-    }
-
-    type MdxTag implements Node & Tag {
-      id: ID!
-      collection: String!
-      name: String!
-      path: String!
-    }
-  `);
-};
-
-module.exports.onCreateNode = (
-  { actions, node, createNodeId, createContentDigest },
-  themeOptions
-) => {
-  const { basePath, tagCollection, mdxCollections } = withDefaults(
-    themeOptions
-  );
-
-  // If mdxCollections is empty array, no tag nodes are generated.
-  if (!mdxCollections.length) {
-    return;
-  }
-
-  // Process MDX nodes only.
-  if (node.internal && node.internal.type !== 'Mdx') {
-    return;
-  }
-
-  // If node does not belong to a collection do not process it.
-  if (!node.fields || !node.fields.collection) {
-    return;
-  }
-
-  // Collection must be included in mdxCollections.
-  if (!mdxCollections.includes(node.fields.collection)) {
-    return;
-  }
-
-  const tags = node.frontmatter.tags;
-  // Create an `MdxTag` for each tag.
-  // If it existed before, it will be overwritten.
-  if (tags) {
-    const nodeType = 'MdxTag';
-    tags.forEach((name) => {
-      const tagNode = {
-        collection: tagCollection,
-        name,
-        path: createPath(basePath, tagCollection, slugify(name)),
-      };
-
-      actions.createNode({
-        id: createNodeId(`${nodeType}-${tagCollection}-${name}`),
-        ...tagNode,
-        internal: {
-          type: nodeType,
-          contentDigest: createContentDigest(
-            `${nodeType}-${tagCollection}-${name}`
-          ),
-        },
-      });
-    });
-  }
-};
-
-// Cannot be replaced by File System Route API since theme option `collection` is part of path of generated pages.
+// Cannot be replaced by File System Route API since theme option `collection` is part of path for generated pages.
 module.exports.createPages = async (
   { actions, graphql, reporter },
   themeOptions
@@ -84,46 +12,57 @@ module.exports.createPages = async (
   const options = withDefaults(themeOptions);
   const { basePath, tagCollection, mdxCollections } = options;
 
-  // Query all tags that belong to the same collection.
+  // Use `group` to retrieve a list of all tags used in all supported mdxCollections.
   const result = await graphql(
     `
-      query($collection: String!) {
-        allTag(filter: { collection: { eq: $collection } }) {
-          nodes {
-            name
-            path
+      query($mdxCollections: [String]!) {
+        allMdx(filter: { fields: { collection: { in: $mdxCollections } } }) {
+          group(field: frontmatter___tags) {
+            tag: fieldValue
+            count: totalCount
           }
         }
       }
     `,
-    { collection: tagCollection }
+    { mdxCollections }
   );
 
   if (result.errors) {
-    reporter.error('There was an error fetching tags.', result.errors);
+    reporter.error(
+      `There was an error fetching all tags from these collections: ${mdxCollections}.`,
+      result.errors
+    );
+    return;
   }
 
-  const tags = result.data.allTag.nodes;
+  // Tags are returned sorted alphabetically in query.
+  const tags = result.data.allMdx.group.map(({ tag, count }) => ({
+    tag,
+    count,
+    path: createTagPath({ basePath, tagCollection, tag }),
+  }));
 
   // Create tags page.
   createPage({
     path: createPath(basePath, tagCollection),
     component: require.resolve('./src/templates/tags-query.js'),
     context: {
-      collection: tagCollection,
+      tags,
+      // Theme options can be used in shadowed pages.
       themeOptions: options,
     },
   });
 
   // Create tag pages
-  tags.forEach((node) => {
+  tags.forEach(({ tag, path }) => {
     actions.createPage({
-      path: node.path,
+      path,
       component: require.resolve('./src/templates/tag-query.js'),
       context: {
+        tag,
         // mdxCollections is required in page query.
         mdxCollections,
-        name: node.name,
+        // Theme options can be used in shadowed pages.
         themeOptions: options,
       },
     });

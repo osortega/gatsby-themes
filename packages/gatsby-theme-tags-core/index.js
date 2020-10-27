@@ -1,2 +1,5 @@
-export * from './src/tag-fragment';
-export * from './src/use-tags';
+const createTagPath = require('./utils/create-tag-path');
+
+module.exports = {
+  createTagPath,
+};

@@ -10,11 +10,11 @@
       "console": "integratedTerminal"
     },
     {
-      "name": "yarn workspace test run dev",
+      "name": "yarn workspace core-themes run dev",
       "type": "pwa-node",
       "request": "launch",
-      "program": "${workspaceFolder}/sites/test/node_modules/.bin/gatsby",
-      "cwd": "${workspaceFolder}/sites/test",
+      "program": "${workspaceFolder}/sites/core-themes/node_modules/.bin/gatsby",
+      "cwd": "${workspaceFolder}/sites/core-themes",
       "args": ["develop"],
       "runtimeArgs": ["--nolazy"],
       "console": "integratedTerminal"

@@ -1,40 +1,41 @@
 const { createPages } = require('../gatsby-node');
 
 describe('createPages', () => {
-  let createPage;
   let actions;
   let reporter;
 
   beforeAll(() => {
     // Create spies.
-    createPage = jest.fn();
-    actions = { createPage };
-    reporter = jest.fn();
+    actions = { createPage: jest.fn() };
+    reporter = { error: jest.fn() };
   });
 
   beforeEach(() => {
     // Clear spies before each test.
-    createPage.mockClear();
-    reporter.mockClear();
+    actions.createPage.mockClear();
+    reporter.error.mockClear();
   });
 
-  it('generate tag pages', async () => {
+  it('tags exist', async () => {
     await createPages(
       {
         actions,
         graphql: () => ({
           data: {
-            allTag: {
-              nodes: [
+            allMdx: {
+              group: [
                 {
-                  name: 'tag1',
-                  path: '/tags/tag1/',
+                  tag: 'tag1',
+                  count: 5,
                 },
                 {
-                  name: 'tag2',
-                  path: '/tags/tag2/',
+                  tag: 'tag2',
+                  count: 1,
                 },
-                { name: 'tag3', path: '/tags/tag3/' },
+                {
+                  tag: 'tag3',
+                  count: 2,
+                },
               ],
             },
           },
@@ -44,19 +45,33 @@ describe('createPages', () => {
       { mdxCollections: ['posts'] }
     );
 
-    // 1 call for tags page and 3 calls for tag pages.
-    expect(createPage).toHaveBeenCalledTimes(4);
+    expect(reporter.error).not.toHaveBeenCalled();
 
-    // No errors.
-    expect(reporter).not.toHaveBeenCalled();
+    // 1 call for tags page and 3 calls for tag pages.
+    expect(actions.createPage).toHaveBeenCalledTimes(4);
 
     // Tags page.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/tags/',
       component: require.resolve('../src/templates/tags-query.js'),
       context: {
-        collection: 'tags',
-        // Default options.
+        tags: [
+          {
+            tag: 'tag1',
+            count: 5,
+            path: '/tags/tag1/',
+          },
+          {
+            tag: 'tag2',
+            count: 1,
+            path: '/tags/tag2/',
+          },
+          {
+            tag: 'tag3',
+            count: 2,
+            path: '/tags/tag3/',
+          },
+        ],
         themeOptions: {
           basePath: '/',
           tagCollection: 'tags',
@@ -66,12 +81,12 @@ describe('createPages', () => {
     });
 
     // Tag page for `tag1`.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/tags/tag1/',
       component: require.resolve('../src/templates/tag-query.js'),
       context: {
+        tag: 'tag1',
         mdxCollections: ['posts'],
-        name: 'tag1',
         themeOptions: {
           basePath: '/',
           tagCollection: 'tags',
@@ -81,12 +96,12 @@ describe('createPages', () => {
     });
 
     // Tag page for `tag2`.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/tags/tag2/',
       component: require.resolve('../src/templates/tag-query.js'),
       context: {
+        tag: 'tag2',
         mdxCollections: ['posts'],
-        name: 'tag2',
         themeOptions: {
           basePath: '/',
           tagCollection: 'tags',
@@ -96,12 +111,12 @@ describe('createPages', () => {
     });
 
     // Tag page for `tag3`.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/tags/tag3/',
       component: require.resolve('../src/templates/tag-query.js'),
       context: {
+        tag: 'tag3',
         mdxCollections: ['posts'],
-        name: 'tag3',
         themeOptions: {
           basePath: '/',
           tagCollection: 'tags',
@@ -113,14 +128,14 @@ describe('createPages', () => {
 
   // Testing with a custom `basePath` makes no sense sicne we mock `graphql`.
 
-  it('there are no tags', async () => {
+  it('no tags exist', async () => {
     await createPages(
       {
         actions,
         graphql: () => ({
           data: {
-            allTag: {
-              nodes: [],
+            allMdx: {
+              group: [],
             },
           },
         }),
@@ -129,15 +144,16 @@ describe('createPages', () => {
       { mdxCollections: ['posts'] }
     );
 
-    expect(createPage).toHaveBeenCalledTimes(1);
+    expect(reporter.error).not.toHaveBeenCalled();
+
+    expect(actions.createPage).toHaveBeenCalledTimes(1);
 
     // Tags page.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/tags/',
       component: require.resolve('../src/templates/tags-query.js'),
       context: {
-        collection: 'tags',
-        // Default options.
+        tags: [],
         themeOptions: {
           basePath: '/',
           tagCollection: 'tags',
@@ -145,5 +161,18 @@ describe('createPages', () => {
         },
       },
     });
+  });
+
+  it('error', async () => {
+    await createPages(
+      { actions, graphql: () => ({ errors: true }), reporter },
+      { mdxCollections: ['posts', 'news'] }
+    );
+
+    expect(reporter.error).toHaveBeenCalledTimes(1);
+    expect(reporter.error).toHaveBeenCalledWith(
+      'There was an error fetching all tags from these collections: posts,news.',
+      true
+    );
   });
 });
