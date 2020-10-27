@@ -119,6 +119,7 @@ module.exports.createPages = async (
 
   if (result.errors) {
     reporter.error('There was an error fetching pages.', result.errors);
+    return;
   }
 
   const pages = result.data.allPage.nodes;

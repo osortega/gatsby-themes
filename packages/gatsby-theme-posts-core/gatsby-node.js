@@ -139,6 +139,7 @@ module.exports.createPages = async (
 
   if (result.errors) {
     reporter.error('There was an error fetching posts.', result.errors);
+    return;
   }
 
   const posts = result.data.allPost.nodes;

@@ -1,21 +1,19 @@
 const { createPages } = require('../gatsby-node');
 
 describe('createPages', () => {
-  let createPage;
   let actions;
   let reporter;
 
   beforeAll(() => {
     // Create spies.
-    createPage = jest.fn();
-    actions = { createPage };
-    reporter = jest.fn();
+    actions = { createPage: jest.fn() };
+    reporter = { error: jest.fn() };
   });
 
   beforeEach(() => {
     // Reset spies.
-    createPage.mockClear();
-    reporter.mockClear();
+    actions.createPage.mockClear();
+    reporter.error.mockClear();
   });
 
   it('generate pages', async () => {
@@ -35,11 +33,13 @@ describe('createPages', () => {
       reporter,
     });
 
+    expect(reporter.error).not.toHaveBeenCalled();
+
     // Check that 3 post pages have been created.
-    expect(createPage).toHaveBeenCalledTimes(3);
+    expect(actions.createPage).toHaveBeenCalledTimes(3);
 
     // About page.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/about/',
       component: require.resolve('../src/template.js'),
       context: {
@@ -54,7 +54,7 @@ describe('createPages', () => {
     });
 
     // Privacy policy page.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/privacy-policy/',
       component: require.resolve('../src/template.js'),
       context: {
@@ -69,7 +69,7 @@ describe('createPages', () => {
     });
 
     // Terms page.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/terms/',
       component: require.resolve('../src/template.js'),
       context: {
@@ -82,6 +82,20 @@ describe('createPages', () => {
         },
       },
     });
+  });
+
+  it('error', async () => {
+    await createPages({
+      actions,
+      graphql: () => ({ errors: true }),
+      reporter,
+    });
+
+    expect(reporter.error).toHaveBeenCalledTimes(1);
+    expect(reporter.error).toHaveBeenCalledWith(
+      'There was an error fetching pages.',
+      true
+    );
   });
 
   // No need to test custom options since they are only being passed through to template.

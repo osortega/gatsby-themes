@@ -1,21 +1,19 @@
 const { createPages } = require('../gatsby-node');
 
 describe('createPages', () => {
-  let createPage;
   let actions;
   let reporter;
 
   beforeAll(() => {
     // Create spies.
-    createPage = jest.fn();
-    actions = { createPage };
-    reporter = jest.fn();
+    actions = { createPage: jest.fn() };
+    reporter = { error: jest.fn() };
   });
 
   beforeEach(() => {
     // Reset spies.
-    createPage.mockClear();
-    reporter.mockClear();
+    actions.createPage.mockClear();
+    reporter.error.mockClear();
   });
 
   it('generate post pages', async () => {
@@ -35,11 +33,13 @@ describe('createPages', () => {
       reporter,
     });
 
+    expect(reporter.error).not.toHaveBeenCalled();
+
     // Check that posts page and 3 post pages have been created.
-    expect(createPage).toHaveBeenCalledTimes(4);
+    expect(actions.createPage).toHaveBeenCalledTimes(4);
 
     // Posts page.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/posts/',
       component: require.resolve('../src/templates/posts-query.js'),
       context: {
@@ -55,7 +55,7 @@ describe('createPages', () => {
     });
 
     // First post.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/posts/first-post/',
       component: require.resolve('../src/templates/post-query.js'),
       context: {
@@ -73,7 +73,7 @@ describe('createPages', () => {
     });
 
     // Second post.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/posts/second-post/',
       component: require.resolve('../src/templates/post-query.js'),
       context: {
@@ -91,7 +91,7 @@ describe('createPages', () => {
     });
 
     // Third post.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/posts/third-post/',
       component: require.resolve('../src/templates/post-query.js'),
       context: {
@@ -129,11 +129,13 @@ describe('createPages', () => {
       { basePath: '/custom' }
     );
 
+    expect(reporter.error).not.toHaveBeenCalled();
+
     // Check that posts page and 3 post pages have been created.
-    expect(createPage).toHaveBeenCalledTimes(4);
+    expect(actions.createPage).toHaveBeenCalledTimes(4);
 
     // Posts page.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/custom/posts/',
       component: require.resolve('../src/templates/posts-query.js'),
       context: {
@@ -149,7 +151,7 @@ describe('createPages', () => {
     });
 
     // First post.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/custom/posts/first-post/',
       component: require.resolve('../src/templates/post-query.js'),
       context: {
@@ -167,7 +169,7 @@ describe('createPages', () => {
     });
 
     // Second post.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/custom/posts/second-post/',
       component: require.resolve('../src/templates/post-query.js'),
       context: {
@@ -185,7 +187,7 @@ describe('createPages', () => {
     });
 
     // Third post.
-    expect(createPage).toHaveBeenCalledWith({
+    expect(actions.createPage).toHaveBeenCalledWith({
       path: '/custom/posts/third-post/',
       component: require.resolve('../src/templates/post-query.js'),
       context: {
@@ -201,5 +203,19 @@ describe('createPages', () => {
         },
       },
     });
+  });
+
+  it('error', async () => {
+    await createPages({
+      actions,
+      graphql: () => ({ errors: true }),
+      reporter,
+    });
+
+    expect(reporter.error).toHaveBeenCalledTimes(1);
+    expect(reporter.error).toHaveBeenCalledWith(
+      'There was an error fetching posts.',
+      true
+    );
   });
 });

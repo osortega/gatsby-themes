@@ -2,18 +2,14 @@ const { onCreateNode } = require('../gatsby-node');
 
 describe('onCreateNode', () => {
   let actions;
-  let createNode;
-  let createNodeField;
   let createNodeId;
   let createContentDigest;
   let getNode;
 
   beforeAll(() => {
     // Create spies.
-    createNode = jest.fn();
-    createNodeField = jest.fn();
     getNode = jest.fn();
-    actions = { createNode, createNodeField };
+    actions = { createNode: jest.fn(), createNodeField: jest.fn() };
 
     // Create mocks.
     createNodeId = () => 'id';
@@ -22,8 +18,8 @@ describe('onCreateNode', () => {
 
   beforeEach(() => {
     // Clear spies before each test.
-    createNode.mockClear();
-    createNodeField.mockClear();
+    actions.createNode.mockClear();
+    actions.createNodeField.mockClear();
     getNode.mockClear();
   });
 
@@ -36,7 +32,7 @@ describe('onCreateNode', () => {
       createContentDigest,
     });
     expect(getNode).not.toHaveBeenCalled();
-    expect(createNode).not.toHaveBeenCalled();
+    expect(actions.createNode).not.toHaveBeenCalled();
   });
 
   it('process Mdx node from wrong collection', () => {
@@ -49,7 +45,7 @@ describe('onCreateNode', () => {
       createNodeId,
       createContentDigest,
     });
-    expect(createNode).not.toHaveBeenCalled();
+    expect(actions.createNode).not.toHaveBeenCalled();
   });
 
   it('process Mdx node from the matching collection', () => {
@@ -69,8 +65,8 @@ describe('onCreateNode', () => {
     });
 
     // Check that one MdxPage has been created.
-    expect(createNode).toHaveBeenCalledTimes(1);
-    expect(createNode).toHaveBeenCalledWith({
+    expect(actions.createNode).toHaveBeenCalledTimes(1);
+    expect(actions.createNode).toHaveBeenCalledWith({
       id: 'id',
       parent: '1234',
       title: 'A title with multiple words',
@@ -79,8 +75,8 @@ describe('onCreateNode', () => {
     });
 
     // Check that 2 fields have been added to Mdx node.
-    expect(createNodeField).toHaveBeenCalledTimes(2);
-    expect(createNodeField).toHaveBeenCalledWith({
+    expect(actions.createNodeField).toHaveBeenCalledTimes(2);
+    expect(actions.createNodeField).toHaveBeenCalledWith({
       node: {
         id: '1234',
         frontmatter: { title: 'A title with multiple words' },
@@ -89,7 +85,7 @@ describe('onCreateNode', () => {
       name: 'collection',
       value: 'pages',
     });
-    expect(createNodeField).toHaveBeenCalledWith({
+    expect(actions.createNodeField).toHaveBeenCalledWith({
       node: {
         id: '1234',
         frontmatter: { title: 'A title with multiple words' },
@@ -120,8 +116,8 @@ describe('onCreateNode', () => {
     );
 
     // Check that one MdxNode has been created.
-    expect(createNode).toHaveBeenCalledTimes(1);
-    expect(createNode).toHaveBeenCalledWith({
+    expect(actions.createNode).toHaveBeenCalledTimes(1);
+    expect(actions.createNode).toHaveBeenCalledWith({
       id: 'id',
       parent: '1234',
       title: 'A title with multiple words',
@@ -130,8 +126,8 @@ describe('onCreateNode', () => {
     });
 
     // Check that 2 fields have been added to Mdx node.
-    expect(createNodeField).toHaveBeenCalledTimes(2);
-    expect(createNodeField).toHaveBeenCalledWith({
+    expect(actions.createNodeField).toHaveBeenCalledTimes(2);
+    expect(actions.createNodeField).toHaveBeenCalledWith({
       node: {
         id: '1234',
         frontmatter: { title: 'A title with multiple words' },
@@ -140,7 +136,7 @@ describe('onCreateNode', () => {
       name: 'collection',
       value: 'pages',
     });
-    expect(createNodeField).toHaveBeenCalledWith({
+    expect(actions.createNodeField).toHaveBeenCalledWith({
       node: {
         id: '1234',
         frontmatter: { title: 'A title with multiple words' },
