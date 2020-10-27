@@ -1,7 +1,7 @@
 {
   "private": true,
   "workspaces": [
-    "sites/*",
+    "examples/*",
     "packages/*"
   ],
   "husky": {

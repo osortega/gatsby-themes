@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "core-themes",
+  "name": "core-themes-example",
   "version": "0.0.0",
   "description": "Example site for developing and testing core themes.",
   "author": "Thilo Maier <git@maier.asia>",

@@ -13,8 +13,8 @@
       "name": "yarn workspace core-themes run dev",
       "type": "pwa-node",
       "request": "launch",
-      "program": "${workspaceFolder}/sites/core-themes/node_modules/.bin/gatsby",
-      "cwd": "${workspaceFolder}/sites/core-themes",
+      "program": "${workspaceFolder}/examples/core-themes/node_modules/.bin/gatsby",
+      "cwd": "${workspaceFolder}/examples/core-themes",
       "args": ["develop"],
       "runtimeArgs": ["--nolazy"],
       "console": "integratedTerminal"
