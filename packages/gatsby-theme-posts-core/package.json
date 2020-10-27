@@ -1,7 +1,7 @@
 {
   "name": "@maiertech/gatsby-theme-posts-core",
   "description": "This theme adds a Post type to Gatsby sites.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Thilo Maier <git@maier.asia>",
   "license": "MIT",
   "main": "index.js",

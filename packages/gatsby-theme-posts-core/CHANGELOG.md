@@ -1,5 +1,16 @@
 # @maiertech/gatsby-theme-posts-core
 
+## 0.3.0
+
+### Minor Changes
+
+- c34b662: Make `author` and `date` fields optional
+- cfc66f6: Add mdxOtherwiseConfigured flag to theme options
+
+### Patch Changes
+
+- 0cfda85: Add location and pageContext to pages
+
 ## 0.2.0
 
 ### Minor Changes

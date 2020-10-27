@@ -1,5 +1,11 @@
 # @maiertech/gatsby-theme-tags-core
 
+## 0.3.1
+
+### Patch Changes
+
+- 0cfda85: Add location and pageContext to pages
+
 ## 0.3.0
 
 ### Minor Changes
