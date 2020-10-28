@@ -1,0 +1,45 @@
+{
+  "name": "@maiertech/gatsby-theme-digital-garden",
+  "description": "Digital garden theme with notest and posts.",
+  "version": "0.0.0",
+  "author": "Thilo Maier <git@maier.asia>",
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maiertech/gatsby-themes.git",
+    "directory": "packages/gatsby-theme-digital-garden"
+  },
+  "keywords": [
+    "gatsby",
+    "gatsby-plugin",
+    "gatsby-theme"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "purge": "rm -rf ./node_modules"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.24.83",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0"
+  },
+  "dependencies": {
+    "@emotion/core": "10.0.35",
+    "@maiertech/components": "0.20.0",
+    "@maiertech/gatsby-theme-posts-core": "0.2.0",
+    "@maiertech/gatsby-theme-tags-core": "0.3.0",
+    "@maiertech/preset": "0.1.0",
+    "@mdx-js/mdx": "1.6.19",
+    "@mdx-js/react": "1.6.19",
+    "gatsby-plugin-catch-links": "2.3.15",
+    "gatsby-plugin-mdx": "1.2.51",
+    "gatsby-plugin-react-helmet": "3.3.14",
+    "gatsby-plugin-theme-ui": "0.3.0",
+    "prop-types": "15.7.2",
+    "react-helmet": "6.1.0",
+    "theme-ui": "0.3.1"
+  }
+}

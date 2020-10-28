@@ -10,11 +10,21 @@
       "console": "integratedTerminal"
     },
     {
-      "name": "yarn workspace core-themes run dev",
+      "name": "yarn workspace core-themes-example run dev",
       "type": "pwa-node",
       "request": "launch",
       "program": "${workspaceFolder}/examples/core-themes/node_modules/.bin/gatsby",
       "cwd": "${workspaceFolder}/examples/core-themes",
+      "args": ["develop"],
+      "runtimeArgs": ["--nolazy"],
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "yarn workspace digital-garden-example run dev",
+      "type": "pwa-node",
+      "request": "launch",
+      "program": "${workspaceFolder}/examples/digital-garden/node_modules/.bin/gatsby",
+      "cwd": "${workspaceFolder}/examples/digital-garden",
       "args": ["develop"],
       "runtimeArgs": ["--nolazy"],
       "console": "integratedTerminal"
