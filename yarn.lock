@@ -1999,12 +1999,12 @@
     "@babel/runtime" "^7.7.2"
     regenerator-runtime "^0.13.3"
 
-"@maiertech/eslint-config@0.14.0":
-  version "0.14.0"
-  resolved "https://registry.yarnpkg.com/@maiertech/eslint-config/-/eslint-config-0.14.0.tgz#24d1b531f615e78aaf74af4954b02fdd8e658f98"
-  integrity sha512-kbMbH0PaA++LqaCqd2AKl/hfltd7sHw5T8sKv0h+/1dNTQwgXowLvLUAwT/5zqlTyu0+VB4jKIGhS3/o0h4I0Q==
+"@maiertech/eslint-config@0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@maiertech/eslint-config/-/eslint-config-0.15.0.tgz#857424b5a3b7af8be4e8753e4e7b37065036adb1"
+  integrity sha512-aFde5ZwTwTgNaXy27R0WWHMa+qFe/kiTF+M38uePYNSC4S4ztSny0rvQwxw9BAWuZyix8pdgjTvQBz02a///Sg==
   dependencies:
-    "@shopify/eslint-plugin" "^39.0.1"
+    "@shopify/eslint-plugin" "39.0.1"
 
 "@maiertech/prettier-config@0.2.1":
   version "0.2.1"
@@ -2325,7 +2325,7 @@
   dependencies:
     tslib "^2.0.0"
 
-"@shopify/eslint-plugin@^39.0.1":
+"@shopify/eslint-plugin@39.0.1":
   version "39.0.1"
   resolved "https://registry.yarnpkg.com/@shopify/eslint-plugin/-/eslint-plugin-39.0.1.tgz#c9b8cfeef6b4f03171ba89bc9308b85a16681a7b"
   integrity sha512-dwFrjOlE/gpWgDSCxDhqBVK7nZ0J2aUXpjJ5xzGSWeAZ4OerkPjjHSPbwIc3PdBHVfCB2MZRfkOV1KKMCVpxbw==
